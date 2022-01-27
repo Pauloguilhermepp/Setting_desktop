@@ -25,12 +25,12 @@ echo 'Dock position has been configured.'
 gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 3125 >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Blue light filter has been configured.'
 
-## Creating .bash_aliases.sh
-echo -e '#!/bin/bash\n' >> $USER_HOME/.bash_aliases.sh 2>> stderr_msgs.txt
-echo '# Python aliases:' >> $USER_HOME/.bash_aliases.sh 2>> stderr_msgs.txt
-echo 'alias python='\'python3\' >> $USER_HOME/.bash_aliases.sh 2>> stderr_msgs.txt
-echo 'alias py='\'python3\' >> $USER_HOME/.bash_aliases.sh 2>> stderr_msgs.txt
-source $USER_HOME/.bash_aliases.sh >> stdout_msgs.txt 2>> stderr_msgs.txt
+## Creating .bash_aliases
+echo '#!/bin/bash\n' > $USER_HOME/.bash_aliases 2>> stderr_msgs.txt
+echo '# Python aliases:' >> $USER_HOME/.bash_aliases 2>> stderr_msgs.txt
+echo 'alias python='\'python3\' >> $USER_HOME/.bash_aliases 2>> stderr_msgs.txt
+echo 'alias py='\'python3\' >> $USER_HOME/.bash_aliases 2>> stderr_msgs.txt
+source $USER_HOME/.bash_aliases >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo '.bash_aliases file has been configured.'
 
 
