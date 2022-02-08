@@ -51,7 +51,10 @@ sudo snap install discord -y >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Discord has been configured.'
 
 ## Vscode
-sudo snap install code >> stdout_msgs.txt 2>> stderr_msgs.txt
+sudo apt install software-properties-common apt-transport-https wget >> stdout_msgs.txt 2>> stderr_msgs.txt
+wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add - >> stdout_msgs.txt 2>> stderr_msgs.txt
+sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" >> stdout_msgs.txt 2>> stderr_msgs.txt
+sudo apt install code >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Vscode has been configured.'
 
 ## Vscode extensions
