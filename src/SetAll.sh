@@ -78,14 +78,19 @@ sudo apt-get install git -y >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Git has been configured.'
 
 ## NeoVim install and config
+### Install vim-plug
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+### Install neovim
 sudo sudo apt install ./nvim-linux64.deb >> stdout_msgs.txt 2>> stderr_msgs.txt
+### Install init.vim
 cd ~/.config/nvim
 wget --no-check-certificate https://raw.githubusercontent.com/OctavioFurio/Neovim-config/main/config.txt
 mv config.txt init.vim
 echo 'Neovim has been installed and properly configured with default configuration.'
 echo 'Neovim init.vim file can be found at ~/.config/nvim/init.vim .'
 echo 'When running Neovim for the first time, run :PlugInstall to install all plugins.'
-### You can make sure NeoVim is always used by setting alias as well.
+### You can make sure NeoVim is always used by setting up aliases as well.
 # alias vi="nvim"
 # alias vim="nvim"
 cd ~
