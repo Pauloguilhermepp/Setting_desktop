@@ -33,6 +33,14 @@ echo 'alias py='\'python3\' >> $USER_HOME/.bash_aliases 2>> stderr_msgs.txt
 source $USER_HOME/.bash_aliases >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo '.bash_aliases file has been configured.'
 
+# Set new wallpaper
+cd ~
+cd Pictures && mkdir Wallpapers
+cd Wallpapers
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1-bJYlG1eJcQeMeBRwVtvm4VGvuZo5vWn' -O wallpaper.png 2>> stderr_msgs.txt
+gsettings set org.gnome.desktop.background picture-uri file://$USER_HOME/Pictures/Wallpapers/wallpaper.png
+echo "New wallpaper set!"
+cd
 
 # Download packages
 
