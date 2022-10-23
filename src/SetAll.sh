@@ -88,6 +88,7 @@ echo 'When running Neovim for the first time, run :PlugInstall to install all pl
 ### You can make sure NeoVim is always used by setting alias as well.
 # alias vi="nvim"
 # alias vim="nvim"
+cd ~
 
 ## Oracle Virtual Box
 sudo apt-get install virtualbox -y >> stdout_msgs.txt 2>> stderr_msgs.txt
@@ -122,3 +123,8 @@ echo 'gcc and g++ compilers have been configured.'
 sudo apt-get install default-jre -y >> stdout_msgs.txt 2>> stderr_msgs.txt
 sudo apt-get install default-jdk -y >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Java has been configured.'
+
+## END
+
+echo 'All settings were properly set, and all software has been downloaded.'
+echo 'Enjoy!'
