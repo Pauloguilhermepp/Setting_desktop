@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Creating files to save installation and erro messages
+# Creating files to save installation and error messages
 USER_HOME="/home/$SUDO_USER"
 cd $USER_HOME/Desktop
 
@@ -10,20 +10,19 @@ echo "Stdout redirected to: $USER_HOME/Desktop/stdout_msgs.txt"
 echo -e 'Messages sent to stderr during the installation process:\n' >> stderr_msgs.txt
 echo "Stderr redirected to: $USER_HOME/Desktop/stderr_msgs.txt"
 
-
 # Computer configuration
 
 ## Dark mode
 gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark' >> stdout_msgs.txt 2>> stderr_msgs.txt
-echo 'Dark mode has been configured.'
+echo 'Dark mode has been set.'
 
 ## Place dock horizontally
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM >> stdout_msgs.txt 2>> stderr_msgs.txt
-echo 'Dock position has been configured.'
+echo 'Dock position has been set.'
 
 ## Blue light filter
 gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 3125 >> stdout_msgs.txt 2>> stderr_msgs.txt
-echo 'Blue light filter has been configured.'
+echo 'Blue light filter has been set.'
 
 ## Creating .bash_aliases
 echo '#!/bin/bash\n' > $USER_HOME/.bash_aliases 2>> stderr_msgs.txt
@@ -40,7 +39,7 @@ cd Wallpapers
 wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1-bJYlG1eJcQeMeBRwVtvm4VGvuZo5vWn' -O wallpaper.png 2>> stderr_msgs.txt
 gsettings set org.gnome.desktop.background picture-uri file://$USER_HOME/Pictures/Wallpapers/wallpaper.png
 echo "New wallpaper set!"
-cd
+cd ~
 
 # Download packages
 
@@ -52,11 +51,11 @@ echo 'Apt updated and upgraded.'
 ## Chrome
 wget -P $USER_HOME/Downloads https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb >> stdout_msgs.txt 2>> stderr_msgs.txt
 sudo apt-get install $USER_HOME/Downloads/google-chrome-stable_current_amd64.deb >> stdout_msgs.txt 2>> stderr_msgs.txt
-echo 'Google chrome has been configured.'
+echo 'Google chrome has been installed and properly configured.'
 
 ## Discord
 sudo snap install discord -y >> stdout_msgs.txt 2>> stderr_msgs.txt
-echo 'Discord has been configured.'
+echo 'Discord has been installed and properly configured.'
 
 ## Vscode
 sudo apt install software-properties-common apt-transport-https wget >> stdout_msgs.txt 2>> stderr_msgs.txt
@@ -74,13 +73,22 @@ code --install-extension streetsidesoftware.code-spell-checker >> stdout_msgs.tx
 code --install-extension streetsidesoftware.code-spell-checker-portuguese >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Vscode extensions have been configured.'
 
-## Vim
-sudo apt-get install vim -y >> stdout_msgs.txt 2>> stderr_msgs.txt
-echo 'Vim has been configured.'
-
 ## Git
 sudo apt-get install git -y >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Git has been configured.'
+
+## NeoVim install and config
+sudo sudo apt install ./nvim-linux64.deb >> stdout_msgs.txt 2>> stderr_msgs.txt
+cd ~/.config/nvim
+wget --no-check-certificate https://raw.githubusercontent.com/OctavioFurio/Neovim-config/main/config.txt
+mv config.txt init.vim
+echo 'Neovim has been installed and properly configured with default configuration.'
+echo 'Neovim init.vim file can be found at ~/.config/nvim/init.vim .'
+echo 'When running Neovim for the first time, run :PlugInstall to install all plugins.'
+### You can make sure NeoVim is always used by setting alias as well.
+# alias vi="nvim"
+# alias vim="nvim"
+cd ~
 
 ## Oracle Virtual Box
 sudo apt-get install virtualbox -y >> stdout_msgs.txt 2>> stderr_msgs.txt
@@ -115,3 +123,8 @@ echo 'gcc and g++ compilers have been configured.'
 sudo apt-get install default-jre -y >> stdout_msgs.txt 2>> stderr_msgs.txt
 sudo apt-get install default-jdk -y >> stdout_msgs.txt 2>> stderr_msgs.txt
 echo 'Java has been configured.'
+
+## END
+
+echo 'All settings were properly set, and all software has been downloaded.'
+echo 'Enjoy!'
